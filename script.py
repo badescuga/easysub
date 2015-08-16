@@ -7,14 +7,16 @@ from subliminal import *
 import urlparse
 import os.path
 import sys
-import xmlrpc_client
 
 print len(sys.argv)
+
 if len(sys.argv) > 1:
 	moviePath = sys.argv[1]
+	print"found movie path! "+moviePath 
 else:
-	moviePath = "/Users/badescuga/Downloads/Rick.and.Morty.S02E02.HDTV.x264-BATV.mp4"
-print "eeee"
+	moviePath = "/Users/badescuga/Downloads/Rick.and.Morty.S02E03.Auto.Erotic.Assimilation.720p.WEBRip.AAC2.0.H.264-Phr0stY.mkv"
+	print "no path found.. using test one"
+
 
 movieName = os.path.basename(urlparse.urlsplit(moviePath).path)
 video = Video.fromname(movieName)
@@ -25,7 +27,9 @@ print video.release_group
 my_region = region.configure('dogpile.cache.memory')
 
 best_subtitles = download_best_subtitles([video], {Language('eng')}, providers=['podnapisi'])
-best_subtitles[video]
+print best_subtitles[video]
+print len(best_subtitles) 
+print len(best_subtitles[video])
 best_subtitle = best_subtitles[video][0]
 
 #save subtitle
