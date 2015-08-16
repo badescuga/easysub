@@ -26,7 +26,7 @@ print video.release_group
 
 my_region = region.configure('dogpile.cache.memory')
 
-best_subtitles = download_best_subtitles([video], {Language('eng')}, providers=['podnapisi'])
+best_subtitles = download_best_subtitles([video], {Language('eng')}, providers=None)
 print best_subtitles[video]
 print len(best_subtitles) 
 print len(best_subtitles[video])
